@@ -2,9 +2,12 @@
 
 
 #include "MyCharacter.h"
+#include "MyWeapon.h"
 
 #include "GameFramework/SpringArmComponent.h"
 #include "Camera/CameraComponent.h"
+#include "GameFramework/PawnMovementComponent.h"
+#include "Engine/World.h"
 
 // Sets default values
 AMyCharacter::AMyCharacter()
@@ -29,6 +32,21 @@ void AMyCharacter::BeginPlay()
 {
 	Super::BeginPlay();
 	
+	if (WeaponClass) {
+		FActorSpawnParameters parameters;
+		parameters.SpawnCollisionHandlingOverride =
+			ESpawnActorCollisionHandlingMethod::AlwaysSpawn;
+		CurrentWeapon = GetWorld()->SpawnActor<AMyWeapon>(WeaponClass,
+			FVector::ZeroVector, FRotator::ZeroRotator,
+			parameters);
+
+		if (CurrentWeapon) {
+			CurrentWeapon->AttachToComponent(GetMesh(),
+				FAttachmentTransformRules::SnapToTargetIncludingScale,
+				"WeaponSocket");
+			CurrentWeapon->SetOwner(this);
+		}
+	}
 }
 
 // Called every frame
@@ -57,6 +75,9 @@ void AMyCharacter::SetupPlayerInputComponent(UInputComponent* PlayerInputCompone
 								&AMyCharacter::BeginCrouch);
 	PlayerInputComponent->BindAction("Crouch", IE_Released, this,
 								&AMyCharacter::EndCrouch);
+
+	PlayerInputComponent->BindAction("Jump", IE_Pressed, this,
+								&AMyCharacter::Jump);
 }
 
 void AMyCharacter::MoveForward(float value)

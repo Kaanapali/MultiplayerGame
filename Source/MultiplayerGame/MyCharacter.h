@@ -23,7 +23,7 @@ protected:
 	void MoveRight(float value);
 	void BeginCrouch();
 	void EndCrouch();
-
+	
 public:	
 	// Called every frame
 	virtual void Tick(float DeltaTime) override;
@@ -37,4 +37,8 @@ protected:
 
 	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "Components")
 	class USpringArmComponent * SpringArmComponent;
+
+	class AMyWeapon * CurrentWeapon;
+	UPROPERTY(EditDefaultsOnly, Category = "Weapon")
+	TSubclassOf<AMyWeapon> WeaponClass;
 };
