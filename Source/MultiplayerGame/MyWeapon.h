@@ -15,6 +15,9 @@ protected:
 	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "Components")
 	class USkeletalMeshComponent * MeshComponent;
 
+	UPROPERTY(EditDefaultsOnly, BlueprintReadOnly, Category = "Weapon")
+	TSubclassOf<UDamageType> DamageType;
+
 public:	
 	// Sets default values for this actor's properties
 	AMyWeapon();
@@ -27,4 +30,5 @@ public:
 	// Called every frame
 	virtual void Tick(float DeltaTime) override;
 
+	void Fire();
 };

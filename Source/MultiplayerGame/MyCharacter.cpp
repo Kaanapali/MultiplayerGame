@@ -78,6 +78,9 @@ void AMyCharacter::SetupPlayerInputComponent(UInputComponent* PlayerInputCompone
 
 	PlayerInputComponent->BindAction("Jump", IE_Pressed, this,
 								&AMyCharacter::Jump);
+
+	PlayerInputComponent->BindAction("Fire", IE_Pressed, this,
+								&AMyCharacter::Fire);
 }
 
 void AMyCharacter::MoveForward(float value)
@@ -98,4 +101,11 @@ void AMyCharacter::BeginCrouch()
 void AMyCharacter::EndCrouch()
 {
 	UnCrouch();
+}
+
+void AMyCharacter::Fire()
+{
+	if (CurrentWeapon) {
+		CurrentWeapon->Fire();
+	}
 }

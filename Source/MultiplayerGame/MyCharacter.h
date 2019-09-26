@@ -23,6 +23,8 @@ protected:
 	void MoveRight(float value);
 	void BeginCrouch();
 	void EndCrouch();
+
+	void Fire();
 	
 public:	
 	// Called every frame
