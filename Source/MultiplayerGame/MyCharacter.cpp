@@ -109,3 +109,12 @@ void AMyCharacter::Fire()
 		CurrentWeapon->Fire();
 	}
 }
+
+FVector AMyCharacter::GetPawnViewLocation() const
+{
+	if (CameraComponent) {
+		return CameraComponent->GetComponentLocation();
+	}
+
+	return Super::GetPawnViewLocation();
+}

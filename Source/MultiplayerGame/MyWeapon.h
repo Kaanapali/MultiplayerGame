@@ -18,6 +18,15 @@ protected:
 	UPROPERTY(EditDefaultsOnly, BlueprintReadOnly, Category = "Weapon")
 	TSubclassOf<UDamageType> DamageType;
 
+	UPROPERTY(EditDefaultsOnly, BlueprintReadOnly, Category = "Weapon")
+	UParticleSystem* FireEffect;
+
+	UPROPERTY(EditDefaultsOnly, BlueprintReadOnly, Category = "Weapon")
+	UParticleSystem* ImpactEffect;
+
+	UPROPERTY(EditDefaultsOnly, BlueprintReadOnly, Category = "Weapon")
+	UParticleSystem* TraceEffect;
+
 public:	
 	// Sets default values for this actor's properties
 	AMyWeapon();
@@ -31,4 +40,8 @@ public:
 	virtual void Tick(float DeltaTime) override;
 
 	void Fire();
+
+protected:
+	void PlayFireEffects(FVector endPoint);
+	void PlayImpactEffects(FVector impactPoint);
 };
