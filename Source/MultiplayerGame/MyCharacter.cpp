@@ -9,6 +9,14 @@
 #include "GameFramework/PawnMovementComponent.h"
 #include "Engine/World.h"
 
+
+void AMyCharacter::GetLifetimeReplicatedProps(
+	TArray<FLifetimeProperty>& OutLifetimeProps) const
+{
+	Super::GetLifetimeReplicatedProps(OutLifetimeProps);
+	//DOREPLIFETIME(AMyCharacter, IsChasing);
+}
+
 // Sets default values
 AMyCharacter::AMyCharacter()
 {
@@ -25,6 +33,8 @@ AMyCharacter::AMyCharacter()
 	CameraComponent->SetupAttachment(SpringArmComponent);
 
 	GetMovementComponent()->GetNavAgentPropertiesRef().bCanCrouch = true;
+
+	DisableMovement = false;
 }
 
 // Called when the game starts or when spawned
@@ -32,7 +42,7 @@ void AMyCharacter::BeginPlay()
 {
 	Super::BeginPlay();
 	
-	if (WeaponClass) {
+	if (Role == ROLE_Authority && WeaponClass) {
 		FActorSpawnParameters parameters;
 		parameters.SpawnCollisionHandlingOverride =
 			ESpawnActorCollisionHandlingMethod::AlwaysSpawn;
@@ -81,6 +91,11 @@ void AMyCharacter::SetupPlayerInputComponent(UInputComponent* PlayerInputCompone
 
 	PlayerInputComponent->BindAction("Fire", IE_Pressed, this,
 								&AMyCharacter::Fire);
+
+	PlayerInputComponent->BindAction("Jog", IE_Pressed, this,
+		&AMyCharacter::BeginJog);
+	PlayerInputComponent->BindAction("Jog", IE_Released, this,
+		&AMyCharacter::EndJog);
 }
 
 void AMyCharacter::MoveForward(float value)
@@ -96,11 +111,25 @@ void AMyCharacter::MoveRight(float value)
 void AMyCharacter::BeginCrouch()
 {
 	Crouch();
+
+	CrouchPressed = true;
 }
 
 void AMyCharacter::EndCrouch()
 {
 	UnCrouch();
+
+	CrouchPressed = false;
+}
+
+void AMyCharacter::BeginJog()
+{
+	JogPressed = true;
+}
+
+void AMyCharacter::EndJog()
+{
+	JogPressed = false;
 }
 
 void AMyCharacter::Fire()

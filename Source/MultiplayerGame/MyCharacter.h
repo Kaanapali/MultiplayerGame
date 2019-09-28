@@ -16,6 +16,7 @@ public:
 	AMyCharacter();
 
 protected:
+	void GetLifetimeReplicatedProps(TArray<FLifetimeProperty>& OutLifetimeProps) const;
 	// Called when the game starts or when spawned
 	virtual void BeginPlay() override;
 
@@ -23,6 +24,8 @@ protected:
 	void MoveRight(float value);
 	void BeginCrouch();
 	void EndCrouch();
+	void BeginJog();
+	void EndJog();
 
 	void Fire();
 	
@@ -41,7 +44,16 @@ protected:
 	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "Components")
 	class USpringArmComponent * SpringArmComponent;
 
+	UPROPERTY(Replicated)
 	class AMyWeapon * CurrentWeapon;
+
 	UPROPERTY(EditDefaultsOnly, Category = "Weapon")
 	TSubclassOf<AMyWeapon> WeaponClass;
+
+	UPROPERTY(VisibleAnywhere, BlueprintReadWrite, Category = "Movement")
+	bool DisableMovement;
+	UPROPERTY(VisibleAnywhere, BlueprintReadWrite, Category = "Movement")
+	bool JogPressed;
+	UPROPERTY(VisibleAnywhere, BlueprintReadWrite, Category = "Movement")
+	bool CrouchPressed;
 };

@@ -16,6 +16,8 @@ AMyWeapon::AMyWeapon()
 	MeshComponent = CreateDefaultSubobject<USkeletalMeshComponent>
 											("Mesh Component");
 	RootComponent = MeshComponent;
+
+	SetReplicates(true);
 }
 
 // Called when the game starts or when spawned
