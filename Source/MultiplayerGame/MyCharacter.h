@@ -26,7 +26,9 @@ protected:
 	void EndCrouch();
 	void BeginJog();
 	void EndJog();
-
+	void BeginJump();
+	void EndJump();
+	
 	void Fire();
 	
 public:	
@@ -56,4 +58,6 @@ protected:
 	uint8 bJogPressed : 1;
 	UPROPERTY(VisibleAnywhere, BlueprintReadWrite, Category = "Movement")
 	uint8 bCrouchPressed : 1;
+	UPROPERTY(VisibleAnywhere, BlueprintReadWrite, Category = "Movement")
+	uint8 bJumpPressed : 1;
 };

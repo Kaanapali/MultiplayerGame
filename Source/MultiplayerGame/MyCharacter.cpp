@@ -87,7 +87,9 @@ void AMyCharacter::SetupPlayerInputComponent(UInputComponent* PlayerInputCompone
 								&AMyCharacter::EndCrouch);
 
 	PlayerInputComponent->BindAction("Jump", IE_Pressed, this,
-								&AMyCharacter::Jump);
+								&AMyCharacter::BeginJump);
+	PlayerInputComponent->BindAction("Jump", IE_Released, this,
+								&AMyCharacter::EndJump);
 
 	PlayerInputComponent->BindAction("Fire", IE_Pressed, this,
 								&AMyCharacter::Fire);
@@ -141,6 +143,30 @@ void AMyCharacter::EndJog()
 		GetCharacterMovement()->MaxWalkSpeed = 150.0f;
 	else
 		GetCharacterMovement()->MaxWalkSpeed = 200.0f;
+}
+
+void AMyCharacter::BeginJump()
+{
+	if (bDisableMovement)
+		return;
+
+	if (!bCrouchPressed || (bCrouchPressed && GetCharacterMovement()->MaxWalkSpeed > 150.0f)) {
+		if (GetCharacterMovement()->Velocity.Size() > 0) {
+			Jump();
+			GetCharacterMovement()->JumpZVelocity = 365;
+		}
+		else {
+			Jump();
+			GetCharacterMovement()->JumpZVelocity = 340;
+		}
+	}
+
+	bJumpPressed = true;
+}
+
+void AMyCharacter::EndJump()
+{
+	bJumpPressed = false;
 }
 
 void AMyCharacter::Fire()

@@ -1,0 +1,104 @@
+{
+	"version": "0.2.0",
+	"configurations": [
+		{
+			"name": "MultiplayerGame (Debug)",
+			"request": "launch",
+			"preLaunchTask": "MultiplayerGame Mac Debug Build",
+			"program": "/Users/kevinan/Projects/MultiplayerGame/Binaries/Mac/MultiplayerGame-Mac-Debug.app/Contents/MacOS/MultiplayerGame-Mac-Debug",
+			"args": [
+			],
+			"cwd": "/Users/kevinan/Projects/UnrealEngine",
+			"type": "lldb"
+		},
+		{
+			"name": "MultiplayerGame (DebugGame)",
+			"request": "launch",
+			"preLaunchTask": "MultiplayerGame Mac DebugGame Build",
+			"program": "/Users/kevinan/Projects/MultiplayerGame/Binaries/Mac/MultiplayerGame-Mac-DebugGame.app/Contents/MacOS/MultiplayerGame-Mac-DebugGame",
+			"args": [
+			],
+			"cwd": "/Users/kevinan/Projects/UnrealEngine",
+			"type": "lldb"
+		},
+		{
+			"name": "MultiplayerGame (Development)",
+			"request": "launch",
+			"preLaunchTask": "MultiplayerGame Mac Development Build",
+			"program": "/Users/kevinan/Projects/MultiplayerGame/Binaries/Mac/MultiplayerGame.app/Contents/MacOS/MultiplayerGame",
+			"args": [
+			],
+			"cwd": "/Users/kevinan/Projects/UnrealEngine",
+			"type": "lldb"
+		},
+		{
+			"name": "MultiplayerGame (Shipping)",
+			"request": "launch",
+			"preLaunchTask": "MultiplayerGame Mac Shipping Build",
+			"program": "/Users/kevinan/Projects/MultiplayerGame/Binaries/Mac/MultiplayerGame-Mac-Shipping.app/Contents/MacOS/MultiplayerGame-Mac-Shipping",
+			"args": [
+			],
+			"cwd": "/Users/kevinan/Projects/UnrealEngine",
+			"type": "lldb"
+		},
+		{
+			"name": "MultiplayerGame (Test)",
+			"request": "launch",
+			"preLaunchTask": "MultiplayerGame Mac Test Build",
+			"program": "/Users/kevinan/Projects/MultiplayerGame/Binaries/Mac/MultiplayerGame-Mac-Test.app/Contents/MacOS/MultiplayerGame-Mac-Test",
+			"args": [
+			],
+			"cwd": "/Users/kevinan/Projects/UnrealEngine",
+			"type": "lldb"
+		},
+		{
+			"name": "MultiplayerGameEditor (Debug)",
+			"request": "launch",
+			"preLaunchTask": "MultiplayerGameEditor Mac Debug Build",
+			"program": "/Users/kevinan/Projects/UnrealEngine/Engine/Binaries/Mac/UE4Editor-Mac-Debug.app/Contents/MacOS/UE4Editor-Mac-Debug",
+			"args": [
+				"/Users/kevinan/Projects/MultiplayerGame/MultiplayerGame.uproject"
+			],
+			"cwd": "/Users/kevinan/Projects/UnrealEngine",
+			"type": "lldb"
+		},
+		{
+			"name": "MultiplayerGameEditor (DebugGame)",
+			"request": "launch",
+			"preLaunchTask": "MultiplayerGameEditor Mac DebugGame Build",
+			"program": "/Users/kevinan/Projects/UnrealEngine/Engine/Binaries/Mac/UE4Editor-Mac-DebugGame.app/Contents/MacOS/UE4Editor-Mac-DebugGame",
+			"args": [
+				"/Users/kevinan/Projects/MultiplayerGame/MultiplayerGame.uproject"
+			],
+			"cwd": "/Users/kevinan/Projects/UnrealEngine",
+			"type": "lldb"
+		},
+		{
+			"name": "MultiplayerGameEditor (Development)",
+			"request": "launch",
+			"preLaunchTask": "MultiplayerGameEditor Mac Development Build",
+			"program": "/Users/kevinan/Projects/UnrealEngine/Engine/Binaries/Mac/UE4Editor.app/Contents/MacOS/UE4Editor",
+			"args": [
+				"/Users/kevinan/Projects/MultiplayerGame/MultiplayerGame.uproject"
+			],
+			"cwd": "/Users/kevinan/Projects/UnrealEngine",
+			"type": "lldb"
+		},
+		{
+			"name": "Generate Project Files",
+			"type": "mono",
+			"request": "launch",
+			"program": "/Users/kevinan/Projects/UnrealEngine/Engine/Binaries/DotNET/UnrealBuildTool.exe",
+			"console": "internalConsole",
+			"args": [
+				"-projectfiles",
+				"-vscode",
+				"-project=\"/Users/kevinan/Projects/MultiplayerGame/MultiplayerGame.uproject\"",
+				"-game",
+				"-engine"
+			],
+			"internalConsoleOptions": "openOnSessionStart",
+			"cwd": "/Users/kevinan/Projects/UnrealEngine"
+		}
+	]
+}

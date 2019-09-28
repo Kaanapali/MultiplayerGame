@@ -1,0 +1,11 @@
+{
+	"files.exclude": {
+		"/Users/kevinan/Projects/MultiplayerGame/.git": true,
+		"/Users/kevinan/Projects/MultiplayerGame/.vscode": true,
+		"/Users/kevinan/Projects/MultiplayerGame/Content": true,
+		"/Users/kevinan/Projects/MultiplayerGame/DerivedDataCache": true,
+		"/Users/kevinan/Projects/MultiplayerGame/Intermediate": true,
+		"/Users/kevinan/Projects/MultiplayerGame/MultiplayerGame.xcworkspace": true,
+		"/Users/kevinan/Projects/MultiplayerGame/Saved": true
+	}
+}

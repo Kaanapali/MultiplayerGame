@@ -1,0 +1,1270 @@
+{
+	"version": "2.0.0",
+	"tasks": [
+		{
+			"label": "MultiplayerGame Mac Debug Build",
+			"group": "build",
+			"command": "Engine/Build/BatchFiles/Mac/Build.sh",
+			"args": [
+				"MultiplayerGame",
+				"Mac",
+				"Debug",
+				"/Users/kevinan/Projects/MultiplayerGame/MultiplayerGame.uproject",
+				"-waitmutex"
+			],
+			"problemMatcher": "$msCompile",
+			"type": "shell",
+			"options": {
+				"cwd": "/Users/kevinan/Projects/UnrealEngine"
+			}
+		},
+		{
+			"label": "MultiplayerGame Mac Debug Rebuild",
+			"group": "build",
+			"command": "Engine/Build/BatchFiles/Mac/Build.sh",
+			"args": [
+				"MultiplayerGame",
+				"Mac",
+				"Debug",
+				"/Users/kevinan/Projects/MultiplayerGame/MultiplayerGame.uproject",
+				"-waitmutex"
+			],
+			"problemMatcher": "$msCompile",
+			"dependsOn": [
+				"MultiplayerGame Mac Debug Clean"
+			],
+			"type": "shell",
+			"options": {
+				"cwd": "/Users/kevinan/Projects/UnrealEngine"
+			}
+		},
+		{
+			"label": "MultiplayerGame Mac Debug Clean",
+			"group": "build",
+			"command": "Engine/Build/BatchFiles/Mac/Build.sh",
+			"args": [
+				"MultiplayerGame",
+				"Mac",
+				"Debug",
+				"/Users/kevinan/Projects/MultiplayerGame/MultiplayerGame.uproject",
+				"-waitmutex",
+				"-clean"
+			],
+			"problemMatcher": "$msCompile",
+			"type": "shell",
+			"options": {
+				"cwd": "/Users/kevinan/Projects/UnrealEngine"
+			}
+		},
+		{
+			"label": "MultiplayerGame Mac DebugGame Build",
+			"group": "build",
+			"command": "Engine/Build/BatchFiles/Mac/Build.sh",
+			"args": [
+				"MultiplayerGame",
+				"Mac",
+				"DebugGame",
+				"/Users/kevinan/Projects/MultiplayerGame/MultiplayerGame.uproject",
+				"-waitmutex"
+			],
+			"problemMatcher": "$msCompile",
+			"type": "shell",
+			"options": {
+				"cwd": "/Users/kevinan/Projects/UnrealEngine"
+			}
+		},
+		{
+			"label": "MultiplayerGame Mac DebugGame Rebuild",
+			"group": "build",
+			"command": "Engine/Build/BatchFiles/Mac/Build.sh",
+			"args": [
+				"MultiplayerGame",
+				"Mac",
+				"DebugGame",
+				"/Users/kevinan/Projects/MultiplayerGame/MultiplayerGame.uproject",
+				"-waitmutex"
+			],
+			"problemMatcher": "$msCompile",
+			"dependsOn": [
+				"MultiplayerGame Mac DebugGame Clean"
+			],
+			"type": "shell",
+			"options": {
+				"cwd": "/Users/kevinan/Projects/UnrealEngine"
+			}
+		},
+		{
+			"label": "MultiplayerGame Mac DebugGame Clean",
+			"group": "build",
+			"command": "Engine/Build/BatchFiles/Mac/Build.sh",
+			"args": [
+				"MultiplayerGame",
+				"Mac",
+				"DebugGame",
+				"/Users/kevinan/Projects/MultiplayerGame/MultiplayerGame.uproject",
+				"-waitmutex",
+				"-clean"
+			],
+			"problemMatcher": "$msCompile",
+			"type": "shell",
+			"options": {
+				"cwd": "/Users/kevinan/Projects/UnrealEngine"
+			}
+		},
+		{
+			"label": "MultiplayerGame Mac Development Build",
+			"group": "build",
+			"command": "Engine/Build/BatchFiles/Mac/Build.sh",
+			"args": [
+				"MultiplayerGame",
+				"Mac",
+				"Development",
+				"/Users/kevinan/Projects/MultiplayerGame/MultiplayerGame.uproject",
+				"-waitmutex"
+			],
+			"problemMatcher": "$msCompile",
+			"type": "shell",
+			"options": {
+				"cwd": "/Users/kevinan/Projects/UnrealEngine"
+			}
+		},
+		{
+			"label": "MultiplayerGame Mac Development Rebuild",
+			"group": "build",
+			"command": "Engine/Build/BatchFiles/Mac/Build.sh",
+			"args": [
+				"MultiplayerGame",
+				"Mac",
+				"Development",
+				"/Users/kevinan/Projects/MultiplayerGame/MultiplayerGame.uproject",
+				"-waitmutex"
+			],
+			"problemMatcher": "$msCompile",
+			"dependsOn": [
+				"MultiplayerGame Mac Development Clean"
+			],
+			"type": "shell",
+			"options": {
+				"cwd": "/Users/kevinan/Projects/UnrealEngine"
+			}
+		},
+		{
+			"label": "MultiplayerGame Mac Development Clean",
+			"group": "build",
+			"command": "Engine/Build/BatchFiles/Mac/Build.sh",
+			"args": [
+				"MultiplayerGame",
+				"Mac",
+				"Development",
+				"/Users/kevinan/Projects/MultiplayerGame/MultiplayerGame.uproject",
+				"-waitmutex",
+				"-clean"
+			],
+			"problemMatcher": "$msCompile",
+			"type": "shell",
+			"options": {
+				"cwd": "/Users/kevinan/Projects/UnrealEngine"
+			}
+		},
+		{
+			"label": "MultiplayerGame Mac Shipping Build",
+			"group": "build",
+			"command": "Engine/Build/BatchFiles/Mac/Build.sh",
+			"args": [
+				"MultiplayerGame",
+				"Mac",
+				"Shipping",
+				"/Users/kevinan/Projects/MultiplayerGame/MultiplayerGame.uproject",
+				"-waitmutex"
+			],
+			"problemMatcher": "$msCompile",
+			"type": "shell",
+			"options": {
+				"cwd": "/Users/kevinan/Projects/UnrealEngine"
+			}
+		},
+		{
+			"label": "MultiplayerGame Mac Shipping Rebuild",
+			"group": "build",
+			"command": "Engine/Build/BatchFiles/Mac/Build.sh",
+			"args": [
+				"MultiplayerGame",
+				"Mac",
+				"Shipping",
+				"/Users/kevinan/Projects/MultiplayerGame/MultiplayerGame.uproject",
+				"-waitmutex"
+			],
+			"problemMatcher": "$msCompile",
+			"dependsOn": [
+				"MultiplayerGame Mac Shipping Clean"
+			],
+			"type": "shell",
+			"options": {
+				"cwd": "/Users/kevinan/Projects/UnrealEngine"
+			}
+		},
+		{
+			"label": "MultiplayerGame Mac Shipping Clean",
+			"group": "build",
+			"command": "Engine/Build/BatchFiles/Mac/Build.sh",
+			"args": [
+				"MultiplayerGame",
+				"Mac",
+				"Shipping",
+				"/Users/kevinan/Projects/MultiplayerGame/MultiplayerGame.uproject",
+				"-waitmutex",
+				"-clean"
+			],
+			"problemMatcher": "$msCompile",
+			"type": "shell",
+			"options": {
+				"cwd": "/Users/kevinan/Projects/UnrealEngine"
+			}
+		},
+		{
+			"label": "MultiplayerGame Mac Test Build",
+			"group": "build",
+			"command": "Engine/Build/BatchFiles/Mac/Build.sh",
+			"args": [
+				"MultiplayerGame",
+				"Mac",
+				"Test",
+				"/Users/kevinan/Projects/MultiplayerGame/MultiplayerGame.uproject",
+				"-waitmutex"
+			],
+			"problemMatcher": "$msCompile",
+			"type": "shell",
+			"options": {
+				"cwd": "/Users/kevinan/Projects/UnrealEngine"
+			}
+		},
+		{
+			"label": "MultiplayerGame Mac Test Rebuild",
+			"group": "build",
+			"command": "Engine/Build/BatchFiles/Mac/Build.sh",
+			"args": [
+				"MultiplayerGame",
+				"Mac",
+				"Test",
+				"/Users/kevinan/Projects/MultiplayerGame/MultiplayerGame.uproject",
+				"-waitmutex"
+			],
+			"problemMatcher": "$msCompile",
+			"dependsOn": [
+				"MultiplayerGame Mac Test Clean"
+			],
+			"type": "shell",
+			"options": {
+				"cwd": "/Users/kevinan/Projects/UnrealEngine"
+			}
+		},
+		{
+			"label": "MultiplayerGame Mac Test Clean",
+			"group": "build",
+			"command": "Engine/Build/BatchFiles/Mac/Build.sh",
+			"args": [
+				"MultiplayerGame",
+				"Mac",
+				"Test",
+				"/Users/kevinan/Projects/MultiplayerGame/MultiplayerGame.uproject",
+				"-waitmutex",
+				"-clean"
+			],
+			"problemMatcher": "$msCompile",
+			"type": "shell",
+			"options": {
+				"cwd": "/Users/kevinan/Projects/UnrealEngine"
+			}
+		},
+		{
+			"label": "MultiplayerGame IOS Debug Build",
+			"group": "build",
+			"command": "Engine/Build/BatchFiles/Mac/Build.sh",
+			"args": [
+				"MultiplayerGame",
+				"IOS",
+				"Debug",
+				"/Users/kevinan/Projects/MultiplayerGame/MultiplayerGame.uproject",
+				"-waitmutex"
+			],
+			"problemMatcher": "$msCompile",
+			"type": "shell",
+			"options": {
+				"cwd": "/Users/kevinan/Projects/UnrealEngine"
+			}
+		},
+		{
+			"label": "MultiplayerGame IOS Debug Rebuild",
+			"group": "build",
+			"command": "Engine/Build/BatchFiles/Mac/Build.sh",
+			"args": [
+				"MultiplayerGame",
+				"IOS",
+				"Debug",
+				"/Users/kevinan/Projects/MultiplayerGame/MultiplayerGame.uproject",
+				"-waitmutex"
+			],
+			"problemMatcher": "$msCompile",
+			"dependsOn": [
+				"MultiplayerGame IOS Debug Clean"
+			],
+			"type": "shell",
+			"options": {
+				"cwd": "/Users/kevinan/Projects/UnrealEngine"
+			}
+		},
+		{
+			"label": "MultiplayerGame IOS Debug Clean",
+			"group": "build",
+			"command": "Engine/Build/BatchFiles/Mac/Build.sh",
+			"args": [
+				"MultiplayerGame",
+				"IOS",
+				"Debug",
+				"/Users/kevinan/Projects/MultiplayerGame/MultiplayerGame.uproject",
+				"-waitmutex",
+				"-clean"
+			],
+			"problemMatcher": "$msCompile",
+			"type": "shell",
+			"options": {
+				"cwd": "/Users/kevinan/Projects/UnrealEngine"
+			}
+		},
+		{
+			"label": "MultiplayerGame IOS DebugGame Build",
+			"group": "build",
+			"command": "Engine/Build/BatchFiles/Mac/Build.sh",
+			"args": [
+				"MultiplayerGame",
+				"IOS",
+				"DebugGame",
+				"/Users/kevinan/Projects/MultiplayerGame/MultiplayerGame.uproject",
+				"-waitmutex"
+			],
+			"problemMatcher": "$msCompile",
+			"type": "shell",
+			"options": {
+				"cwd": "/Users/kevinan/Projects/UnrealEngine"
+			}
+		},
+		{
+			"label": "MultiplayerGame IOS DebugGame Rebuild",
+			"group": "build",
+			"command": "Engine/Build/BatchFiles/Mac/Build.sh",
+			"args": [
+				"MultiplayerGame",
+				"IOS",
+				"DebugGame",
+				"/Users/kevinan/Projects/MultiplayerGame/MultiplayerGame.uproject",
+				"-waitmutex"
+			],
+			"problemMatcher": "$msCompile",
+			"dependsOn": [
+				"MultiplayerGame IOS DebugGame Clean"
+			],
+			"type": "shell",
+			"options": {
+				"cwd": "/Users/kevinan/Projects/UnrealEngine"
+			}
+		},
+		{
+			"label": "MultiplayerGame IOS DebugGame Clean",
+			"group": "build",
+			"command": "Engine/Build/BatchFiles/Mac/Build.sh",
+			"args": [
+				"MultiplayerGame",
+				"IOS",
+				"DebugGame",
+				"/Users/kevinan/Projects/MultiplayerGame/MultiplayerGame.uproject",
+				"-waitmutex",
+				"-clean"
+			],
+			"problemMatcher": "$msCompile",
+			"type": "shell",
+			"options": {
+				"cwd": "/Users/kevinan/Projects/UnrealEngine"
+			}
+		},
+		{
+			"label": "MultiplayerGame IOS Development Build",
+			"group": "build",
+			"command": "Engine/Build/BatchFiles/Mac/Build.sh",
+			"args": [
+				"MultiplayerGame",
+				"IOS",
+				"Development",
+				"/Users/kevinan/Projects/MultiplayerGame/MultiplayerGame.uproject",
+				"-waitmutex"
+			],
+			"problemMatcher": "$msCompile",
+			"type": "shell",
+			"options": {
+				"cwd": "/Users/kevinan/Projects/UnrealEngine"
+			}
+		},
+		{
+			"label": "MultiplayerGame IOS Development Rebuild",
+			"group": "build",
+			"command": "Engine/Build/BatchFiles/Mac/Build.sh",
+			"args": [
+				"MultiplayerGame",
+				"IOS",
+				"Development",
+				"/Users/kevinan/Projects/MultiplayerGame/MultiplayerGame.uproject",
+				"-waitmutex"
+			],
+			"problemMatcher": "$msCompile",
+			"dependsOn": [
+				"MultiplayerGame IOS Development Clean"
+			],
+			"type": "shell",
+			"options": {
+				"cwd": "/Users/kevinan/Projects/UnrealEngine"
+			}
+		},
+		{
+			"label": "MultiplayerGame IOS Development Clean",
+			"group": "build",
+			"command": "Engine/Build/BatchFiles/Mac/Build.sh",
+			"args": [
+				"MultiplayerGame",
+				"IOS",
+				"Development",
+				"/Users/kevinan/Projects/MultiplayerGame/MultiplayerGame.uproject",
+				"-waitmutex",
+				"-clean"
+			],
+			"problemMatcher": "$msCompile",
+			"type": "shell",
+			"options": {
+				"cwd": "/Users/kevinan/Projects/UnrealEngine"
+			}
+		},
+		{
+			"label": "MultiplayerGame IOS Shipping Build",
+			"group": "build",
+			"command": "Engine/Build/BatchFiles/Mac/Build.sh",
+			"args": [
+				"MultiplayerGame",
+				"IOS",
+				"Shipping",
+				"/Users/kevinan/Projects/MultiplayerGame/MultiplayerGame.uproject",
+				"-waitmutex"
+			],
+			"problemMatcher": "$msCompile",
+			"type": "shell",
+			"options": {
+				"cwd": "/Users/kevinan/Projects/UnrealEngine"
+			}
+		},
+		{
+			"label": "MultiplayerGame IOS Shipping Rebuild",
+			"group": "build",
+			"command": "Engine/Build/BatchFiles/Mac/Build.sh",
+			"args": [
+				"MultiplayerGame",
+				"IOS",
+				"Shipping",
+				"/Users/kevinan/Projects/MultiplayerGame/MultiplayerGame.uproject",
+				"-waitmutex"
+			],
+			"problemMatcher": "$msCompile",
+			"dependsOn": [
+				"MultiplayerGame IOS Shipping Clean"
+			],
+			"type": "shell",
+			"options": {
+				"cwd": "/Users/kevinan/Projects/UnrealEngine"
+			}
+		},
+		{
+			"label": "MultiplayerGame IOS Shipping Clean",
+			"group": "build",
+			"command": "Engine/Build/BatchFiles/Mac/Build.sh",
+			"args": [
+				"MultiplayerGame",
+				"IOS",
+				"Shipping",
+				"/Users/kevinan/Projects/MultiplayerGame/MultiplayerGame.uproject",
+				"-waitmutex",
+				"-clean"
+			],
+			"problemMatcher": "$msCompile",
+			"type": "shell",
+			"options": {
+				"cwd": "/Users/kevinan/Projects/UnrealEngine"
+			}
+		},
+		{
+			"label": "MultiplayerGame IOS Test Build",
+			"group": "build",
+			"command": "Engine/Build/BatchFiles/Mac/Build.sh",
+			"args": [
+				"MultiplayerGame",
+				"IOS",
+				"Test",
+				"/Users/kevinan/Projects/MultiplayerGame/MultiplayerGame.uproject",
+				"-waitmutex"
+			],
+			"problemMatcher": "$msCompile",
+			"type": "shell",
+			"options": {
+				"cwd": "/Users/kevinan/Projects/UnrealEngine"
+			}
+		},
+		{
+			"label": "MultiplayerGame IOS Test Rebuild",
+			"group": "build",
+			"command": "Engine/Build/BatchFiles/Mac/Build.sh",
+			"args": [
+				"MultiplayerGame",
+				"IOS",
+				"Test",
+				"/Users/kevinan/Projects/MultiplayerGame/MultiplayerGame.uproject",
+				"-waitmutex"
+			],
+			"problemMatcher": "$msCompile",
+			"dependsOn": [
+				"MultiplayerGame IOS Test Clean"
+			],
+			"type": "shell",
+			"options": {
+				"cwd": "/Users/kevinan/Projects/UnrealEngine"
+			}
+		},
+		{
+			"label": "MultiplayerGame IOS Test Clean",
+			"group": "build",
+			"command": "Engine/Build/BatchFiles/Mac/Build.sh",
+			"args": [
+				"MultiplayerGame",
+				"IOS",
+				"Test",
+				"/Users/kevinan/Projects/MultiplayerGame/MultiplayerGame.uproject",
+				"-waitmutex",
+				"-clean"
+			],
+			"problemMatcher": "$msCompile",
+			"type": "shell",
+			"options": {
+				"cwd": "/Users/kevinan/Projects/UnrealEngine"
+			}
+		},
+		{
+			"label": "MultiplayerGame HTML5 Debug Build",
+			"group": "build",
+			"command": "Engine/Build/BatchFiles/Mac/Build.sh",
+			"args": [
+				"MultiplayerGame",
+				"HTML5",
+				"Debug",
+				"/Users/kevinan/Projects/MultiplayerGame/MultiplayerGame.uproject",
+				"-waitmutex"
+			],
+			"problemMatcher": "$msCompile",
+			"type": "shell",
+			"options": {
+				"cwd": "/Users/kevinan/Projects/UnrealEngine"
+			}
+		},
+		{
+			"label": "MultiplayerGame HTML5 Debug Rebuild",
+			"group": "build",
+			"command": "Engine/Build/BatchFiles/Mac/Build.sh",
+			"args": [
+				"MultiplayerGame",
+				"HTML5",
+				"Debug",
+				"/Users/kevinan/Projects/MultiplayerGame/MultiplayerGame.uproject",
+				"-waitmutex"
+			],
+			"problemMatcher": "$msCompile",
+			"dependsOn": [
+				"MultiplayerGame HTML5 Debug Clean"
+			],
+			"type": "shell",
+			"options": {
+				"cwd": "/Users/kevinan/Projects/UnrealEngine"
+			}
+		},
+		{
+			"label": "MultiplayerGame HTML5 Debug Clean",
+			"group": "build",
+			"command": "Engine/Build/BatchFiles/Mac/Build.sh",
+			"args": [
+				"MultiplayerGame",
+				"HTML5",
+				"Debug",
+				"/Users/kevinan/Projects/MultiplayerGame/MultiplayerGame.uproject",
+				"-waitmutex",
+				"-clean"
+			],
+			"problemMatcher": "$msCompile",
+			"type": "shell",
+			"options": {
+				"cwd": "/Users/kevinan/Projects/UnrealEngine"
+			}
+		},
+		{
+			"label": "MultiplayerGame HTML5 DebugGame Build",
+			"group": "build",
+			"command": "Engine/Build/BatchFiles/Mac/Build.sh",
+			"args": [
+				"MultiplayerGame",
+				"HTML5",
+				"DebugGame",
+				"/Users/kevinan/Projects/MultiplayerGame/MultiplayerGame.uproject",
+				"-waitmutex"
+			],
+			"problemMatcher": "$msCompile",
+			"type": "shell",
+			"options": {
+				"cwd": "/Users/kevinan/Projects/UnrealEngine"
+			}
+		},
+		{
+			"label": "MultiplayerGame HTML5 DebugGame Rebuild",
+			"group": "build",
+			"command": "Engine/Build/BatchFiles/Mac/Build.sh",
+			"args": [
+				"MultiplayerGame",
+				"HTML5",
+				"DebugGame",
+				"/Users/kevinan/Projects/MultiplayerGame/MultiplayerGame.uproject",
+				"-waitmutex"
+			],
+			"problemMatcher": "$msCompile",
+			"dependsOn": [
+				"MultiplayerGame HTML5 DebugGame Clean"
+			],
+			"type": "shell",
+			"options": {
+				"cwd": "/Users/kevinan/Projects/UnrealEngine"
+			}
+		},
+		{
+			"label": "MultiplayerGame HTML5 DebugGame Clean",
+			"group": "build",
+			"command": "Engine/Build/BatchFiles/Mac/Build.sh",
+			"args": [
+				"MultiplayerGame",
+				"HTML5",
+				"DebugGame",
+				"/Users/kevinan/Projects/MultiplayerGame/MultiplayerGame.uproject",
+				"-waitmutex",
+				"-clean"
+			],
+			"problemMatcher": "$msCompile",
+			"type": "shell",
+			"options": {
+				"cwd": "/Users/kevinan/Projects/UnrealEngine"
+			}
+		},
+		{
+			"label": "MultiplayerGame HTML5 Development Build",
+			"group": "build",
+			"command": "Engine/Build/BatchFiles/Mac/Build.sh",
+			"args": [
+				"MultiplayerGame",
+				"HTML5",
+				"Development",
+				"/Users/kevinan/Projects/MultiplayerGame/MultiplayerGame.uproject",
+				"-waitmutex"
+			],
+			"problemMatcher": "$msCompile",
+			"type": "shell",
+			"options": {
+				"cwd": "/Users/kevinan/Projects/UnrealEngine"
+			}
+		},
+		{
+			"label": "MultiplayerGame HTML5 Development Rebuild",
+			"group": "build",
+			"command": "Engine/Build/BatchFiles/Mac/Build.sh",
+			"args": [
+				"MultiplayerGame",
+				"HTML5",
+				"Development",
+				"/Users/kevinan/Projects/MultiplayerGame/MultiplayerGame.uproject",
+				"-waitmutex"
+			],
+			"problemMatcher": "$msCompile",
+			"dependsOn": [
+				"MultiplayerGame HTML5 Development Clean"
+			],
+			"type": "shell",
+			"options": {
+				"cwd": "/Users/kevinan/Projects/UnrealEngine"
+			}
+		},
+		{
+			"label": "MultiplayerGame HTML5 Development Clean",
+			"group": "build",
+			"command": "Engine/Build/BatchFiles/Mac/Build.sh",
+			"args": [
+				"MultiplayerGame",
+				"HTML5",
+				"Development",
+				"/Users/kevinan/Projects/MultiplayerGame/MultiplayerGame.uproject",
+				"-waitmutex",
+				"-clean"
+			],
+			"problemMatcher": "$msCompile",
+			"type": "shell",
+			"options": {
+				"cwd": "/Users/kevinan/Projects/UnrealEngine"
+			}
+		},
+		{
+			"label": "MultiplayerGame HTML5 Shipping Build",
+			"group": "build",
+			"command": "Engine/Build/BatchFiles/Mac/Build.sh",
+			"args": [
+				"MultiplayerGame",
+				"HTML5",
+				"Shipping",
+				"/Users/kevinan/Projects/MultiplayerGame/MultiplayerGame.uproject",
+				"-waitmutex"
+			],
+			"problemMatcher": "$msCompile",
+			"type": "shell",
+			"options": {
+				"cwd": "/Users/kevinan/Projects/UnrealEngine"
+			}
+		},
+		{
+			"label": "MultiplayerGame HTML5 Shipping Rebuild",
+			"group": "build",
+			"command": "Engine/Build/BatchFiles/Mac/Build.sh",
+			"args": [
+				"MultiplayerGame",
+				"HTML5",
+				"Shipping",
+				"/Users/kevinan/Projects/MultiplayerGame/MultiplayerGame.uproject",
+				"-waitmutex"
+			],
+			"problemMatcher": "$msCompile",
+			"dependsOn": [
+				"MultiplayerGame HTML5 Shipping Clean"
+			],
+			"type": "shell",
+			"options": {
+				"cwd": "/Users/kevinan/Projects/UnrealEngine"
+			}
+		},
+		{
+			"label": "MultiplayerGame HTML5 Shipping Clean",
+			"group": "build",
+			"command": "Engine/Build/BatchFiles/Mac/Build.sh",
+			"args": [
+				"MultiplayerGame",
+				"HTML5",
+				"Shipping",
+				"/Users/kevinan/Projects/MultiplayerGame/MultiplayerGame.uproject",
+				"-waitmutex",
+				"-clean"
+			],
+			"problemMatcher": "$msCompile",
+			"type": "shell",
+			"options": {
+				"cwd": "/Users/kevinan/Projects/UnrealEngine"
+			}
+		},
+		{
+			"label": "MultiplayerGame HTML5 Test Build",
+			"group": "build",
+			"command": "Engine/Build/BatchFiles/Mac/Build.sh",
+			"args": [
+				"MultiplayerGame",
+				"HTML5",
+				"Test",
+				"/Users/kevinan/Projects/MultiplayerGame/MultiplayerGame.uproject",
+				"-waitmutex"
+			],
+			"problemMatcher": "$msCompile",
+			"type": "shell",
+			"options": {
+				"cwd": "/Users/kevinan/Projects/UnrealEngine"
+			}
+		},
+		{
+			"label": "MultiplayerGame HTML5 Test Rebuild",
+			"group": "build",
+			"command": "Engine/Build/BatchFiles/Mac/Build.sh",
+			"args": [
+				"MultiplayerGame",
+				"HTML5",
+				"Test",
+				"/Users/kevinan/Projects/MultiplayerGame/MultiplayerGame.uproject",
+				"-waitmutex"
+			],
+			"problemMatcher": "$msCompile",
+			"dependsOn": [
+				"MultiplayerGame HTML5 Test Clean"
+			],
+			"type": "shell",
+			"options": {
+				"cwd": "/Users/kevinan/Projects/UnrealEngine"
+			}
+		},
+		{
+			"label": "MultiplayerGame HTML5 Test Clean",
+			"group": "build",
+			"command": "Engine/Build/BatchFiles/Mac/Build.sh",
+			"args": [
+				"MultiplayerGame",
+				"HTML5",
+				"Test",
+				"/Users/kevinan/Projects/MultiplayerGame/MultiplayerGame.uproject",
+				"-waitmutex",
+				"-clean"
+			],
+			"problemMatcher": "$msCompile",
+			"type": "shell",
+			"options": {
+				"cwd": "/Users/kevinan/Projects/UnrealEngine"
+			}
+		},
+		{
+			"label": "MultiplayerGame TVOS Debug Build",
+			"group": "build",
+			"command": "Engine/Build/BatchFiles/Mac/Build.sh",
+			"args": [
+				"MultiplayerGame",
+				"TVOS",
+				"Debug",
+				"/Users/kevinan/Projects/MultiplayerGame/MultiplayerGame.uproject",
+				"-waitmutex"
+			],
+			"problemMatcher": "$msCompile",
+			"type": "shell",
+			"options": {
+				"cwd": "/Users/kevinan/Projects/UnrealEngine"
+			}
+		},
+		{
+			"label": "MultiplayerGame TVOS Debug Rebuild",
+			"group": "build",
+			"command": "Engine/Build/BatchFiles/Mac/Build.sh",
+			"args": [
+				"MultiplayerGame",
+				"TVOS",
+				"Debug",
+				"/Users/kevinan/Projects/MultiplayerGame/MultiplayerGame.uproject",
+				"-waitmutex"
+			],
+			"problemMatcher": "$msCompile",
+			"dependsOn": [
+				"MultiplayerGame TVOS Debug Clean"
+			],
+			"type": "shell",
+			"options": {
+				"cwd": "/Users/kevinan/Projects/UnrealEngine"
+			}
+		},
+		{
+			"label": "MultiplayerGame TVOS Debug Clean",
+			"group": "build",
+			"command": "Engine/Build/BatchFiles/Mac/Build.sh",
+			"args": [
+				"MultiplayerGame",
+				"TVOS",
+				"Debug",
+				"/Users/kevinan/Projects/MultiplayerGame/MultiplayerGame.uproject",
+				"-waitmutex",
+				"-clean"
+			],
+			"problemMatcher": "$msCompile",
+			"type": "shell",
+			"options": {
+				"cwd": "/Users/kevinan/Projects/UnrealEngine"
+			}
+		},
+		{
+			"label": "MultiplayerGame TVOS DebugGame Build",
+			"group": "build",
+			"command": "Engine/Build/BatchFiles/Mac/Build.sh",
+			"args": [
+				"MultiplayerGame",
+				"TVOS",
+				"DebugGame",
+				"/Users/kevinan/Projects/MultiplayerGame/MultiplayerGame.uproject",
+				"-waitmutex"
+			],
+			"problemMatcher": "$msCompile",
+			"type": "shell",
+			"options": {
+				"cwd": "/Users/kevinan/Projects/UnrealEngine"
+			}
+		},
+		{
+			"label": "MultiplayerGame TVOS DebugGame Rebuild",
+			"group": "build",
+			"command": "Engine/Build/BatchFiles/Mac/Build.sh",
+			"args": [
+				"MultiplayerGame",
+				"TVOS",
+				"DebugGame",
+				"/Users/kevinan/Projects/MultiplayerGame/MultiplayerGame.uproject",
+				"-waitmutex"
+			],
+			"problemMatcher": "$msCompile",
+			"dependsOn": [
+				"MultiplayerGame TVOS DebugGame Clean"
+			],
+			"type": "shell",
+			"options": {
+				"cwd": "/Users/kevinan/Projects/UnrealEngine"
+			}
+		},
+		{
+			"label": "MultiplayerGame TVOS DebugGame Clean",
+			"group": "build",
+			"command": "Engine/Build/BatchFiles/Mac/Build.sh",
+			"args": [
+				"MultiplayerGame",
+				"TVOS",
+				"DebugGame",
+				"/Users/kevinan/Projects/MultiplayerGame/MultiplayerGame.uproject",
+				"-waitmutex",
+				"-clean"
+			],
+			"problemMatcher": "$msCompile",
+			"type": "shell",
+			"options": {
+				"cwd": "/Users/kevinan/Projects/UnrealEngine"
+			}
+		},
+		{
+			"label": "MultiplayerGame TVOS Development Build",
+			"group": "build",
+			"command": "Engine/Build/BatchFiles/Mac/Build.sh",
+			"args": [
+				"MultiplayerGame",
+				"TVOS",
+				"Development",
+				"/Users/kevinan/Projects/MultiplayerGame/MultiplayerGame.uproject",
+				"-waitmutex"
+			],
+			"problemMatcher": "$msCompile",
+			"type": "shell",
+			"options": {
+				"cwd": "/Users/kevinan/Projects/UnrealEngine"
+			}
+		},
+		{
+			"label": "MultiplayerGame TVOS Development Rebuild",
+			"group": "build",
+			"command": "Engine/Build/BatchFiles/Mac/Build.sh",
+			"args": [
+				"MultiplayerGame",
+				"TVOS",
+				"Development",
+				"/Users/kevinan/Projects/MultiplayerGame/MultiplayerGame.uproject",
+				"-waitmutex"
+			],
+			"problemMatcher": "$msCompile",
+			"dependsOn": [
+				"MultiplayerGame TVOS Development Clean"
+			],
+			"type": "shell",
+			"options": {
+				"cwd": "/Users/kevinan/Projects/UnrealEngine"
+			}
+		},
+		{
+			"label": "MultiplayerGame TVOS Development Clean",
+			"group": "build",
+			"command": "Engine/Build/BatchFiles/Mac/Build.sh",
+			"args": [
+				"MultiplayerGame",
+				"TVOS",
+				"Development",
+				"/Users/kevinan/Projects/MultiplayerGame/MultiplayerGame.uproject",
+				"-waitmutex",
+				"-clean"
+			],
+			"problemMatcher": "$msCompile",
+			"type": "shell",
+			"options": {
+				"cwd": "/Users/kevinan/Projects/UnrealEngine"
+			}
+		},
+		{
+			"label": "MultiplayerGame TVOS Shipping Build",
+			"group": "build",
+			"command": "Engine/Build/BatchFiles/Mac/Build.sh",
+			"args": [
+				"MultiplayerGame",
+				"TVOS",
+				"Shipping",
+				"/Users/kevinan/Projects/MultiplayerGame/MultiplayerGame.uproject",
+				"-waitmutex"
+			],
+			"problemMatcher": "$msCompile",
+			"type": "shell",
+			"options": {
+				"cwd": "/Users/kevinan/Projects/UnrealEngine"
+			}
+		},
+		{
+			"label": "MultiplayerGame TVOS Shipping Rebuild",
+			"group": "build",
+			"command": "Engine/Build/BatchFiles/Mac/Build.sh",
+			"args": [
+				"MultiplayerGame",
+				"TVOS",
+				"Shipping",
+				"/Users/kevinan/Projects/MultiplayerGame/MultiplayerGame.uproject",
+				"-waitmutex"
+			],
+			"problemMatcher": "$msCompile",
+			"dependsOn": [
+				"MultiplayerGame TVOS Shipping Clean"
+			],
+			"type": "shell",
+			"options": {
+				"cwd": "/Users/kevinan/Projects/UnrealEngine"
+			}
+		},
+		{
+			"label": "MultiplayerGame TVOS Shipping Clean",
+			"group": "build",
+			"command": "Engine/Build/BatchFiles/Mac/Build.sh",
+			"args": [
+				"MultiplayerGame",
+				"TVOS",
+				"Shipping",
+				"/Users/kevinan/Projects/MultiplayerGame/MultiplayerGame.uproject",
+				"-waitmutex",
+				"-clean"
+			],
+			"problemMatcher": "$msCompile",
+			"type": "shell",
+			"options": {
+				"cwd": "/Users/kevinan/Projects/UnrealEngine"
+			}
+		},
+		{
+			"label": "MultiplayerGame TVOS Test Build",
+			"group": "build",
+			"command": "Engine/Build/BatchFiles/Mac/Build.sh",
+			"args": [
+				"MultiplayerGame",
+				"TVOS",
+				"Test",
+				"/Users/kevinan/Projects/MultiplayerGame/MultiplayerGame.uproject",
+				"-waitmutex"
+			],
+			"problemMatcher": "$msCompile",
+			"type": "shell",
+			"options": {
+				"cwd": "/Users/kevinan/Projects/UnrealEngine"
+			}
+		},
+		{
+			"label": "MultiplayerGame TVOS Test Rebuild",
+			"group": "build",
+			"command": "Engine/Build/BatchFiles/Mac/Build.sh",
+			"args": [
+				"MultiplayerGame",
+				"TVOS",
+				"Test",
+				"/Users/kevinan/Projects/MultiplayerGame/MultiplayerGame.uproject",
+				"-waitmutex"
+			],
+			"problemMatcher": "$msCompile",
+			"dependsOn": [
+				"MultiplayerGame TVOS Test Clean"
+			],
+			"type": "shell",
+			"options": {
+				"cwd": "/Users/kevinan/Projects/UnrealEngine"
+			}
+		},
+		{
+			"label": "MultiplayerGame TVOS Test Clean",
+			"group": "build",
+			"command": "Engine/Build/BatchFiles/Mac/Build.sh",
+			"args": [
+				"MultiplayerGame",
+				"TVOS",
+				"Test",
+				"/Users/kevinan/Projects/MultiplayerGame/MultiplayerGame.uproject",
+				"-waitmutex",
+				"-clean"
+			],
+			"problemMatcher": "$msCompile",
+			"type": "shell",
+			"options": {
+				"cwd": "/Users/kevinan/Projects/UnrealEngine"
+			}
+		},
+		{
+			"label": "MultiplayerGameEditor Mac Debug Build",
+			"group": "build",
+			"command": "Engine/Build/BatchFiles/Mac/Build.sh",
+			"args": [
+				"MultiplayerGameEditor",
+				"Mac",
+				"Debug",
+				"/Users/kevinan/Projects/MultiplayerGame/MultiplayerGame.uproject",
+				"-waitmutex"
+			],
+			"problemMatcher": "$msCompile",
+			"type": "shell",
+			"options": {
+				"cwd": "/Users/kevinan/Projects/UnrealEngine"
+			}
+		},
+		{
+			"label": "MultiplayerGameEditor Mac Debug Rebuild",
+			"group": "build",
+			"command": "Engine/Build/BatchFiles/Mac/Build.sh",
+			"args": [
+				"MultiplayerGameEditor",
+				"Mac",
+				"Debug",
+				"/Users/kevinan/Projects/MultiplayerGame/MultiplayerGame.uproject",
+				"-waitmutex"
+			],
+			"problemMatcher": "$msCompile",
+			"dependsOn": [
+				"MultiplayerGameEditor Mac Debug Clean"
+			],
+			"type": "shell",
+			"options": {
+				"cwd": "/Users/kevinan/Projects/UnrealEngine"
+			}
+		},
+		{
+			"label": "MultiplayerGameEditor Mac Debug Clean",
+			"group": "build",
+			"command": "Engine/Build/BatchFiles/Mac/Build.sh",
+			"args": [
+				"MultiplayerGameEditor",
+				"Mac",
+				"Debug",
+				"/Users/kevinan/Projects/MultiplayerGame/MultiplayerGame.uproject",
+				"-waitmutex",
+				"-clean"
+			],
+			"problemMatcher": "$msCompile",
+			"type": "shell",
+			"options": {
+				"cwd": "/Users/kevinan/Projects/UnrealEngine"
+			}
+		},
+		{
+			"label": "MultiplayerGameEditor Mac DebugGame Build",
+			"group": "build",
+			"command": "Engine/Build/BatchFiles/Mac/Build.sh",
+			"args": [
+				"MultiplayerGameEditor",
+				"Mac",
+				"DebugGame",
+				"/Users/kevinan/Projects/MultiplayerGame/MultiplayerGame.uproject",
+				"-waitmutex"
+			],
+			"problemMatcher": "$msCompile",
+			"type": "shell",
+			"options": {
+				"cwd": "/Users/kevinan/Projects/UnrealEngine"
+			}
+		},
+		{
+			"label": "MultiplayerGameEditor Mac DebugGame Rebuild",
+			"group": "build",
+			"command": "Engine/Build/BatchFiles/Mac/Build.sh",
+			"args": [
+				"MultiplayerGameEditor",
+				"Mac",
+				"DebugGame",
+				"/Users/kevinan/Projects/MultiplayerGame/MultiplayerGame.uproject",
+				"-waitmutex"
+			],
+			"problemMatcher": "$msCompile",
+			"dependsOn": [
+				"MultiplayerGameEditor Mac DebugGame Clean"
+			],
+			"type": "shell",
+			"options": {
+				"cwd": "/Users/kevinan/Projects/UnrealEngine"
+			}
+		},
+		{
+			"label": "MultiplayerGameEditor Mac DebugGame Clean",
+			"group": "build",
+			"command": "Engine/Build/BatchFiles/Mac/Build.sh",
+			"args": [
+				"MultiplayerGameEditor",
+				"Mac",
+				"DebugGame",
+				"/Users/kevinan/Projects/MultiplayerGame/MultiplayerGame.uproject",
+				"-waitmutex",
+				"-clean"
+			],
+			"problemMatcher": "$msCompile",
+			"type": "shell",
+			"options": {
+				"cwd": "/Users/kevinan/Projects/UnrealEngine"
+			}
+		},
+		{
+			"label": "MultiplayerGameEditor Mac Development Build",
+			"group": "build",
+			"command": "Engine/Build/BatchFiles/Mac/Build.sh",
+			"args": [
+				"MultiplayerGameEditor",
+				"Mac",
+				"Development",
+				"/Users/kevinan/Projects/MultiplayerGame/MultiplayerGame.uproject",
+				"-waitmutex"
+			],
+			"problemMatcher": "$msCompile",
+			"type": "shell",
+			"options": {
+				"cwd": "/Users/kevinan/Projects/UnrealEngine"
+			}
+		},
+		{
+			"label": "MultiplayerGameEditor Mac Development Rebuild",
+			"group": "build",
+			"command": "Engine/Build/BatchFiles/Mac/Build.sh",
+			"args": [
+				"MultiplayerGameEditor",
+				"Mac",
+				"Development",
+				"/Users/kevinan/Projects/MultiplayerGame/MultiplayerGame.uproject",
+				"-waitmutex"
+			],
+			"problemMatcher": "$msCompile",
+			"dependsOn": [
+				"MultiplayerGameEditor Mac Development Clean"
+			],
+			"type": "shell",
+			"options": {
+				"cwd": "/Users/kevinan/Projects/UnrealEngine"
+			}
+		},
+		{
+			"label": "MultiplayerGameEditor Mac Development Clean",
+			"group": "build",
+			"command": "Engine/Build/BatchFiles/Mac/Build.sh",
+			"args": [
+				"MultiplayerGameEditor",
+				"Mac",
+				"Development",
+				"/Users/kevinan/Projects/MultiplayerGame/MultiplayerGame.uproject",
+				"-waitmutex",
+				"-clean"
+			],
+			"problemMatcher": "$msCompile",
+			"type": "shell",
+			"options": {
+				"cwd": "/Users/kevinan/Projects/UnrealEngine"
+			}
+		}
+	]
+}
