@@ -51,9 +51,9 @@ protected:
 	TSubclassOf<AMyWeapon> WeaponClass;
 
 	UPROPERTY(VisibleAnywhere, BlueprintReadWrite, Category = "Movement")
-	bool DisableMovement;
+	uint8 bDisableMovement : 1;
 	UPROPERTY(VisibleAnywhere, BlueprintReadWrite, Category = "Movement")
-	bool JogPressed;
+	uint8 bJogPressed : 1;
 	UPROPERTY(VisibleAnywhere, BlueprintReadWrite, Category = "Movement")
-	bool CrouchPressed;
+	uint8 bCrouchPressed : 1;
 };

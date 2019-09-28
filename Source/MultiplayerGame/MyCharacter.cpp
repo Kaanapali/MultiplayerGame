@@ -6,7 +6,7 @@
 
 #include "GameFramework/SpringArmComponent.h"
 #include "Camera/CameraComponent.h"
-#include "GameFramework/PawnMovementComponent.h"
+#include "GameFramework/CharacterMovementComponent.h"
 #include "Engine/World.h"
 
 
@@ -34,7 +34,7 @@ AMyCharacter::AMyCharacter()
 
 	GetMovementComponent()->GetNavAgentPropertiesRef().bCanCrouch = true;
 
-	DisableMovement = false;
+	bDisableMovement = false;
 }
 
 // Called when the game starts or when spawned
@@ -112,24 +112,35 @@ void AMyCharacter::BeginCrouch()
 {
 	Crouch();
 
-	CrouchPressed = true;
+	bCrouchPressed = true;
+	GetCharacterMovement()->MaxWalkSpeed = 150.0f;
 }
 
 void AMyCharacter::EndCrouch()
 {
 	UnCrouch();
 
-	CrouchPressed = false;
+	bCrouchPressed = false;
+	if (bJogPressed)
+		GetCharacterMovement()->MaxWalkSpeed = 375.0f;
+	else
+		GetCharacterMovement()->MaxWalkSpeed = 200.0f;
 }
 
 void AMyCharacter::BeginJog()
 {
-	JogPressed = true;
+	bJogPressed = true;
+
+	GetCharacterMovement()->MaxWalkSpeed = 375.0f;
 }
 
 void AMyCharacter::EndJog()
 {
-	JogPressed = false;
+	bJogPressed = false;
+	if (bCrouchPressed)
+		GetCharacterMovement()->MaxWalkSpeed = 150.0f;
+	else
+		GetCharacterMovement()->MaxWalkSpeed = 200.0f;
 }
 
 void AMyCharacter::Fire()
