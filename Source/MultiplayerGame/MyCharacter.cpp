@@ -34,6 +34,7 @@ AMyCharacter::AMyCharacter()
 	GetMovementComponent()->GetNavAgentPropertiesRef().bCanCrouch = true;
 
 	bDisableMovement = false;
+	bCrouchPressed = false;
 }
 
 // Called when the game starts or when spawned
