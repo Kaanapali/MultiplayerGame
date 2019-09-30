@@ -82,9 +82,9 @@ void AMyCharacter::SetupPlayerInputComponent(UInputComponent* PlayerInputCompone
 								&AMyCharacter::AddControllerYawInput);
 
 	PlayerInputComponent->BindAction("Crouch", IE_Pressed, this,
-								&AMyCharacter::BeginCrouch);
-	PlayerInputComponent->BindAction("Crouch", IE_Released, this,
-								&AMyCharacter::EndCrouch);
+								&AMyCharacter::DoCrouch);
+	PlayerInputComponent->BindAction("Prone", IE_Pressed, this,
+								&AMyCharacter::DoProne);
 
 	PlayerInputComponent->BindAction("Jump", IE_Pressed, this,
 								&AMyCharacter::BeginJump);
@@ -94,39 +94,66 @@ void AMyCharacter::SetupPlayerInputComponent(UInputComponent* PlayerInputCompone
 	PlayerInputComponent->BindAction("Fire", IE_Pressed, this,
 								&AMyCharacter::Fire);
 
-	PlayerInputComponent->BindAction("Jog", IE_Pressed, this,
+	PlayerInputComponent->BindAction("BeginJog", IE_Pressed, this,
 		&AMyCharacter::BeginJog);
-	PlayerInputComponent->BindAction("Jog", IE_Released, this,
+	PlayerInputComponent->BindAction("EndJog", IE_Released, this,
 		&AMyCharacter::EndJog);
 }
 
 void AMyCharacter::MoveForward(float value)
 {
-	AddMovementInput(GetActorForwardVector(), value);
+	if (!bDisableMovement)
+		AddMovementInput(GetActorForwardVector(), value);
 }
 
 void AMyCharacter::MoveRight(float value)
 {
-	AddMovementInput(GetActorRightVector(), value);
+	if (!bDisableMovement)
+		AddMovementInput(GetActorRightVector(), value);
 }
 
-void AMyCharacter::BeginCrouch()
+void AMyCharacter::DoCrouch()
 {
-	Crouch();
+	// Crouch();
+	/**
+	 * because we don't have an animation to go from Prone to Crouch and vice-versa. 
+	 * If you had the animations, you would probably want to allow the player to enter a Prone state from Crouch
+	 */
+	if (bPronePressed)
+		return;
 
-	bCrouchPressed = true;
-	GetCharacterMovement()->MaxWalkSpeed = 150.0f;
+	if (!bCrouchPressed) {
+		bCrouchPressed = true;
+		GetCharacterMovement()->MaxWalkSpeed = 160.0f;
+	}
+	else {
+		bCrouchPressed = false;
+		if (bJogPressed)
+			GetCharacterMovement()->MaxWalkSpeed = 375.0f;
+		else
+			GetCharacterMovement()->MaxWalkSpeed = 200.0f;
+	}	
 }
 
-void AMyCharacter::EndCrouch()
+void AMyCharacter::DoProne()
 {
-	UnCrouch();
+	/**
+	 * check if we are currently crouched and if so, 
+	 * not allowing the character to enter a prone state 
+	 * (as mentioned, since we do not have the transition animations).
+	 */ 
+	if (bCrouchPressed)
+		return;
 
-	bCrouchPressed = false;
-	if (bJogPressed)
-		GetCharacterMovement()->MaxWalkSpeed = 375.0f;
-	else
-		GetCharacterMovement()->MaxWalkSpeed = 200.0f;
+	// TODO: need adjust
+	if (!bPronePressed) {
+		bPronePressed = true;
+		GetCharacterMovement()->MaxWalkSpeed = 60.0f;
+	}
+	else {
+		bPronePressed = false;
+		GetCharacterMovement()->MaxWalkSpeed = 160.0f;
+	}	
 }
 
 void AMyCharacter::BeginJog()
@@ -140,7 +167,7 @@ void AMyCharacter::EndJog()
 {
 	bJogPressed = false;
 	if (bCrouchPressed)
-		GetCharacterMovement()->MaxWalkSpeed = 150.0f;
+		GetCharacterMovement()->MaxWalkSpeed = 160.0f;
 	else
 		GetCharacterMovement()->MaxWalkSpeed = 200.0f;
 }
@@ -150,7 +177,7 @@ void AMyCharacter::BeginJump()
 	if (bDisableMovement)
 		return;
 
-	if (!bCrouchPressed || (bCrouchPressed && GetCharacterMovement()->MaxWalkSpeed > 150.0f)) {
+	if (!bCrouchPressed || (bCrouchPressed && GetCharacterMovement()->MaxWalkSpeed > 160.0f)) {
 		if (GetCharacterMovement()->Velocity.Size() > 0) {
 			Jump();
 			GetCharacterMovement()->JumpZVelocity = 365;

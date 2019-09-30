@@ -22,8 +22,8 @@ protected:
 
 	void MoveForward(float value);
 	void MoveRight(float value);
-	void BeginCrouch();
-	void EndCrouch();
+	void DoCrouch();
+	void DoProne();
 	void BeginJog();
 	void EndJog();
 	void BeginJump();
@@ -60,4 +60,6 @@ protected:
 	uint8 bCrouchPressed : 1;
 	UPROPERTY(VisibleAnywhere, BlueprintReadWrite, Category = "Movement")
 	uint8 bJumpPressed : 1;
+	UPROPERTY(VisibleAnywhere, BlueprintReadWrite, Category = "Movement")
+	uint8 bPronePressed : 1;
 };
