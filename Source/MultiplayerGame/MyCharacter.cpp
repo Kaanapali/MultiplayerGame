@@ -9,7 +9,6 @@
 #include "GameFramework/CharacterMovementComponent.h"
 #include "Engine/World.h"
 
-
 void AMyCharacter::GetLifetimeReplicatedProps(
 	TArray<FLifetimeProperty>& OutLifetimeProps) const
 {
@@ -94,9 +93,9 @@ void AMyCharacter::SetupPlayerInputComponent(UInputComponent* PlayerInputCompone
 	PlayerInputComponent->BindAction("Fire", IE_Pressed, this,
 								&AMyCharacter::Fire);
 
-	PlayerInputComponent->BindAction("BeginJog", IE_Pressed, this,
+	PlayerInputComponent->BindAction("Jog", IE_Pressed, this,
 		&AMyCharacter::BeginJog);
-	PlayerInputComponent->BindAction("EndJog", IE_Released, this,
+	PlayerInputComponent->BindAction("Jog", IE_Released, this,
 		&AMyCharacter::EndJog);
 }
 
@@ -158,6 +157,9 @@ void AMyCharacter::DoProne()
 
 void AMyCharacter::BeginJog()
 {
+	if (bDisableMovement)
+		return;
+
 	bJogPressed = true;
 
 	GetCharacterMovement()->MaxWalkSpeed = 375.0f;
@@ -166,6 +168,7 @@ void AMyCharacter::BeginJog()
 void AMyCharacter::EndJog()
 {
 	bJogPressed = false;
+
 	if (bCrouchPressed)
 		GetCharacterMovement()->MaxWalkSpeed = 160.0f;
 	else
