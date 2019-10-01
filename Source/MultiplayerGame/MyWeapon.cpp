@@ -2,6 +2,8 @@
 
 
 #include "MyWeapon.h"
+#include "MyCharacter.h"
+
 #include "Components/SkeletalMeshComponent.h"
 #include "DrawDebugHelpers.h"
 #include "Kismet/GameplayStatics.h"
@@ -63,6 +65,9 @@ void AMyWeapon::Fire()
 			PlayImpactEffects(hit.ImpactPoint);
 			endPoint = hit.ImpactPoint;
 
+			AMyCharacter* ownerChar = Cast<AMyCharacter>(owner);
+			ownerChar->SpawnSimpleStuff(endPoint);
+			
 			UE_LOG(MyLogCategory, Log, TEXT("-%s-: endpoint : %s"),
 				*GetNameSafe(hitActor), *endPoint.ToString());
 		}
@@ -70,7 +75,8 @@ void AMyWeapon::Fire()
 		PlayFireEffects(endPoint);
 
 		FVector startPoint = MeshComponent->GetSocketLocation("Muzzle");
-		//DrawDebugLine(GetWorld(), startPoint, endPoint, FColor::Red, false, 1.0f, 0, 1);
+		DrawDebugLine(GetWorld(), startPoint, endPoint, FColor::Red,
+			false, 1.0f, 0, 1);
 	}
 }
 

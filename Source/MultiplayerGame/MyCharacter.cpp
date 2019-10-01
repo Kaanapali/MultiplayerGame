@@ -218,3 +218,16 @@ FVector AMyCharacter::GetPawnViewLocation() const
 
 	return Super::GetPawnViewLocation();
 }
+
+void AMyCharacter::SpawnSimpleStuff(FVector loc)
+{
+	UClass* MyItemBlueprintClass = StaticLoadClass(AActor::StaticClass(),
+		NULL, TEXT("/Game/SimpleStuff.SimpleStuff_C"),
+		NULL, LOAD_None, NULL);
+	UE_LOG(MyLogCategory, Log, TEXT("-%d-"), MyItemBlueprintClass);
+	FActorSpawnParameters parameters;
+	parameters.Owner = this;
+	parameters.Instigator = Instigator;
+	parameters.SpawnCollisionHandlingOverride = ESpawnActorCollisionHandlingMethod::AlwaysSpawn;
+	GetWorld()->SpawnActor<AActor>(MyItemBlueprintClass, loc, FRotator::ZeroRotator, parameters);
+}

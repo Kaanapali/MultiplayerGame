@@ -15,6 +15,9 @@ public:
 	// Sets default values for this character's properties
 	AMyCharacter();
 
+	// for test
+	void SpawnSimpleStuff(FVector loc);
+
 protected:
 	void GetLifetimeReplicatedProps(TArray<FLifetimeProperty>& OutLifetimeProps) const;
 	// Called when the game starts or when spawned
@@ -36,7 +39,8 @@ protected:
 	void EndJump();
 	
 	void Fire();
-	
+
+
 public:	
 	// Called every frame
 	virtual void Tick(float DeltaTime) override;
