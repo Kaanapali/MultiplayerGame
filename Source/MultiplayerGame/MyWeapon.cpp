@@ -7,6 +7,9 @@
 #include "Kismet/GameplayStatics.h"
 #include "Particles/ParticleSystemComponent.h"
 
+DEFINE_LOG_CATEGORY(MyLogCategory)
+
+
 // Sets default values
 AMyWeapon::AMyWeapon()
 {
@@ -42,7 +45,7 @@ void AMyWeapon::Fire()
 		FRotator eyeRot;
 		owner->GetActorEyesViewPoint(eyeLoc, eyeRot);
 		
-		FVector endPoint = eyeLoc + (eyeRot.Vector() * 100);
+		FVector endPoint = eyeLoc + (eyeRot.Vector() * 1000);
 
 		FCollisionQueryParams cparams;
 		cparams.AddIgnoredActor(owner);
@@ -57,9 +60,11 @@ void AMyWeapon::Fire()
 				eyeRot.Vector(), hit,
 				owner->GetInstigatorController(),
 				this, DamageType);
-
 			PlayImpactEffects(hit.ImpactPoint);
 			endPoint = hit.ImpactPoint;
+
+			UE_LOG(MyLogCategory, Log, TEXT("-%s-: endpoint : %s"),
+				*GetNameSafe(hitActor), *endPoint.ToString());
 		}
 
 		PlayFireEffects(endPoint);
@@ -83,9 +88,9 @@ void AMyWeapon::PlayFireEffects(FVector endPoint)
 	}
 }
 
-void AMyWeapon::PlayImpactEffects(FVector endPoint)
+void AMyWeapon::PlayImpactEffects(FVector impactPoint)
 {
 	if (ImpactEffect) {
-		UGameplayStatics::SpawnEmitterAtLocation(GetWorld(), ImpactEffect, endPoint);
+		UGameplayStatics::SpawnEmitterAtLocation(GetWorld(), ImpactEffect, impactPoint);
 	}
 }

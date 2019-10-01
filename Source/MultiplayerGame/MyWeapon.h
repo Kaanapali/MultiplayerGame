@@ -6,6 +6,8 @@
 #include "GameFramework/Actor.h"
 #include "MyWeapon.generated.h"
 
+DECLARE_LOG_CATEGORY_EXTERN(MyLogCategory, Log, All);
+
 UCLASS()
 class MULTIPLAYERGAME_API AMyWeapon : public AActor
 {
