@@ -64,7 +64,8 @@ void AMyWeapon::Fire()
 
 		PlayFireEffects(endPoint);
 
-		DrawDebugLine(GetWorld(), eyeLoc, endPoint, FColor::Red,
+		FVector startPoint = MeshComponent->GetSocketLocation("Muzzle");
+		DrawDebugLine(GetWorld(), startPoint, endPoint, FColor::Red,
 			false, 1.0f, 0, 1);
 	}
 }

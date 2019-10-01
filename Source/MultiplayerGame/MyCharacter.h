@@ -20,8 +20,14 @@ protected:
 	// Called when the game starts or when spawned
 	virtual void BeginPlay() override;
 
+	// Handles input for moving forward and backward.
+	UFUNCTION()
 	void MoveForward(float value);
+
+	// Handles input for moving right and left.
+	UFUNCTION()
 	void MoveRight(float value);
+
 	void DoCrouch();
 	void DoProne();
 	void BeginJog();

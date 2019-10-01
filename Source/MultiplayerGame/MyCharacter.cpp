@@ -102,8 +102,11 @@ void AMyCharacter::SetupPlayerInputComponent(UInputComponent* PlayerInputCompone
 
 void AMyCharacter::MoveForward(float value)
 {
-	if (!bDisableMovement)
+	if (!bDisableMovement) {
+		//FVector Direction = FRotationMatrix(Controller->GetControlRotation()).GetScaledAxis(EAxis::X);
+		FVector Direction = GetActorForwardVector();
 		AddMovementInput(GetActorForwardVector(), value);
+	}
 }
 
 void AMyCharacter::MoveRight(float value)
