@@ -2,6 +2,7 @@
 
 
 #include "MyCharacter.h"
+#include "MultiplayerGame.h"
 #include "MyWeapon.h"
 
 #include "GameFramework/SpringArmComponent.h"

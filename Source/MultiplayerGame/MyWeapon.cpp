@@ -2,6 +2,7 @@
 
 
 #include "MyWeapon.h"
+#include "MultiplayerGame.h"
 #include "MyCharacter.h"
 
 #include "Components/SkeletalMeshComponent.h"
@@ -11,6 +12,17 @@
 
 DEFINE_LOG_CATEGORY(MyLogCategory)
 
+void AMyWeapon::GetLifetimeReplicatedProps(TArray<FLifetimeProperty>&
+											OutLifetimeProps) const {
+	Super::GetLifetimeReplicatedProps(OutLifetimeProps);
+	DOREPLIFETIME_CONDITION(AMyWeapon, HitPoint, COND_SkipOwner);
+}
+
+void AMyWeapon::OnReplicateHitPoint()
+{
+	PlayFireEffects(HitPoint);
+	PlayImpactEffects(HitPoint);
+}
 
 // Sets default values
 AMyWeapon::AMyWeapon()
@@ -39,15 +51,31 @@ void AMyWeapon::Tick(float DeltaTime)
 
 }
 
+void AMyWeapon::ServerFire_Implementation()
+{
+	Fire();
+}
+
+bool AMyWeapon::ServerFire_Validate()
+{
+	return true;
+}
+
 void AMyWeapon::Fire()
 {
+	if (Role != ROLE_Authority)
+	{
+		ServerFire();
+		//return;
+	}
+
 	AActor * owner = GetOwner();
 	if (owner) {
 		FVector eyeLoc;
 		FRotator eyeRot;
 		owner->GetActorEyesViewPoint(eyeLoc, eyeRot);
 		
-		FVector endPoint = eyeLoc + (eyeRot.Vector() * 1000);
+		FVector endPoint = eyeLoc + (eyeRot.Vector() * 10000);
 
 		FCollisionQueryParams cparams;
 		cparams.AddIgnoredActor(owner);
@@ -73,6 +101,9 @@ void AMyWeapon::Fire()
 		}
 
 		PlayFireEffects(endPoint);
+		if (Role == ROLE_Authority) {
+			HitPoint = endPoint;
+		}
 
 		FVector startPoint = MeshComponent->GetSocketLocation("Muzzle");
 		DrawDebugLine(GetWorld(), startPoint, endPoint, FColor::Red,

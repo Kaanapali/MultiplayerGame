@@ -2,7 +2,6 @@
 
 #pragma once
 
-#include "CoreMinimal.h"
 #include "GameFramework/Character.h"
 #include "MyCharacter.generated.h"
 
@@ -15,7 +14,7 @@ public:
 	// Sets default values for this character's properties
 	AMyCharacter();
 
-	// for test
+	// for testing purpose: spawn a stuff right away.
 	void SpawnSimpleStuff(FVector loc);
 
 protected:

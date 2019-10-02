@@ -2,7 +2,6 @@
 
 #pragma once
 
-#include "CoreMinimal.h"
 #include "GameFramework/Actor.h"
 #include "MyWeapon.generated.h"
 
@@ -36,6 +35,15 @@ public:
 protected:
 	// Called when the game starts or when spawned
 	virtual void BeginPlay() override;
+
+	UFUNCTION(Server, Reliable, WithValidation)
+	void ServerFire();
+	
+	UPROPERTY(ReplicatedUsing = OnReplicateHitPoint)
+	FVector_NetQuantize HitPoint;
+
+	UFUNCTION()
+	void OnReplicateHitPoint();
 
 public:	
 	// Called every frame
