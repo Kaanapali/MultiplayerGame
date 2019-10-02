@@ -37,6 +37,9 @@ AMyCharacter::AMyCharacter()
 	bDisableMovement = false;
 	bCrouchPressed = false;
 
+	HealthComponent = CreateDefaultSubobject<UMyHealthComponent>
+		("Health Component");
+
 	SetReplicates(true);
 }
 

@@ -2,6 +2,7 @@
 
 #pragma once
 
+#include "MyHealthComponent.h"
 #include "GameFramework/Character.h"
 #include "MyCharacter.generated.h"
 
@@ -57,6 +58,9 @@ protected:
 
 	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "Components")
 	class USpringArmComponent * SpringArmComponent;
+
+	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "Components")
+	class UMyHealthComponent * HealthComponent;
 
 	UPROPERTY(Replicated)
 	class AMyWeapon * CurrentWeapon;

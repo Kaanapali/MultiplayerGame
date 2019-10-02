@@ -10,6 +10,8 @@
 #include "Kismet/GameplayStatics.h"
 #include "Particles/ParticleSystemComponent.h"
 
+#define COLLISION_WEAPON ECC_GameTraceChannel1
+
 DEFINE_LOG_CATEGORY(MyLogCategory)
 
 void AMyWeapon::GetLifetimeReplicatedProps(TArray<FLifetimeProperty>&
@@ -84,7 +86,7 @@ void AMyWeapon::Fire()
 
 		FHitResult hit;
 		if (GetWorld()->LineTraceSingleByChannel(hit, eyeLoc, endPoint,
-												ECC_Visibility, cparams)) {
+												COLLISION_WEAPON, cparams)) {
 			AActor * hitActor = hit.GetActor();
 			UGameplayStatics::ApplyPointDamage(hitActor, 10.0f,
 				eyeRot.Vector(), hit,
