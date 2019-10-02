@@ -14,6 +14,9 @@ public:
 	// Sets default values for this character's properties
 	AMyCharacter();
 
+	UFUNCTION(Server, Reliable, WithValidation)
+	void ServerSpawnSimpleStuff(FVector loc);
+
 	// for testing purpose: spawn a stuff right away.
 	void SpawnSimpleStuff(FVector loc);
 

@@ -63,7 +63,7 @@ bool AMyWeapon::ServerFire_Validate()
 
 void AMyWeapon::Fire()
 {
-	UE_LOG(MyLogCategory, Log, TEXT("FIRE"));
+	UE_LOG(MyLogCategory, Log, TEXT("FIRE2"));
 	if (Role < ROLE_Authority)
 	{
 		ServerFire();

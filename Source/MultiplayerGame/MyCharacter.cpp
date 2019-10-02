@@ -14,7 +14,7 @@ void AMyCharacter::GetLifetimeReplicatedProps(
 	TArray<FLifetimeProperty>& OutLifetimeProps) const
 {
 	Super::GetLifetimeReplicatedProps(OutLifetimeProps);
-	//DOREPLIFETIME(AMyCharacter, IsChasing);
+	DOREPLIFETIME(AMyCharacter, CurrentWeapon);
 }
 
 // Sets default values
@@ -36,6 +36,8 @@ AMyCharacter::AMyCharacter()
 
 	bDisableMovement = false;
 	bCrouchPressed = false;
+
+	SetReplicates(true);
 }
 
 // Called when the game starts or when spawned
@@ -209,6 +211,10 @@ void AMyCharacter::Fire()
 	if (CurrentWeapon) {
 		CurrentWeapon->Fire();
 	}
+	else {
+		UE_LOG(MyLogCategory, Error, TEXT("CurentWeapon is nullptr!"));
+
+	}
 }
 
 FVector AMyCharacter::GetPawnViewLocation() const
@@ -220,8 +226,23 @@ FVector AMyCharacter::GetPawnViewLocation() const
 	return Super::GetPawnViewLocation();
 }
 
+void AMyCharacter::ServerSpawnSimpleStuff_Implementation(FVector loc)
+{
+	SpawnSimpleStuff(loc);
+}
+
+bool AMyCharacter::ServerSpawnSimpleStuff_Validate(FVector loc)
+{
+	return true;
+}
+
 void AMyCharacter::SpawnSimpleStuff(FVector loc)
 {
+	if (Role < ROLE_Authority)
+	{
+		ServerSpawnSimpleStuff(loc);
+	}
+
 	UClass* MyItemBlueprintClass = StaticLoadClass(AActor::StaticClass(),
 		NULL, TEXT("/Game/SimpleStuff.SimpleStuff_C"),
 		NULL, LOAD_None, NULL);
