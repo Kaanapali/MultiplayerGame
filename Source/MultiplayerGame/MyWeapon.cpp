@@ -63,10 +63,10 @@ bool AMyWeapon::ServerFire_Validate()
 
 void AMyWeapon::Fire()
 {
-	if (Role != ROLE_Authority)
+	UE_LOG(MyLogCategory, Log, TEXT("FIRE"));
+	if (Role < ROLE_Authority)
 	{
 		ServerFire();
-		//return;
 	}
 
 	AActor * owner = GetOwner();
