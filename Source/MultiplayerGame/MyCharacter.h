@@ -43,7 +43,11 @@ protected:
 	
 	void Fire();
 
-
+	UFUNCTION()
+	void OnHealthChanged(UMyHealthComponent* healthComp, 
+					float health, float damage, 
+					const class UDamageType* damageType, 
+					class AController* instigatedBy, AActor* damageCauser);
 public:	
 	// Called every frame
 	virtual void Tick(float DeltaTime) override;
@@ -67,6 +71,9 @@ protected:
 
 	UPROPERTY(EditDefaultsOnly, Category = "Weapon")
 	TSubclassOf<AMyWeapon> WeaponClass;
+
+	UPROPERTY(Replicated, BlueprintReadOnly, Category = "Player")
+	uint8 bIsDead : 1;
 
 	UPROPERTY(VisibleAnywhere, BlueprintReadWrite, Category = "Movement")
 	uint8 bDisableMovement : 1;

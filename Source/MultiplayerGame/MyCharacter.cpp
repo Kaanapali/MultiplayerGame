@@ -8,6 +8,8 @@
 #include "GameFramework/SpringArmComponent.h"
 #include "Camera/CameraComponent.h"
 #include "GameFramework/CharacterMovementComponent.h"
+#include "GameFramework/Character.h"
+#include "Components/CapsuleComponent.h"
 #include "Engine/World.h"
 
 void AMyCharacter::GetLifetimeReplicatedProps(
@@ -15,6 +17,7 @@ void AMyCharacter::GetLifetimeReplicatedProps(
 {
 	Super::GetLifetimeReplicatedProps(OutLifetimeProps);
 	DOREPLIFETIME(AMyCharacter, CurrentWeapon);
+	DOREPLIFETIME(AMyCharacter, bIsDead);
 }
 
 // Sets default values
@@ -39,6 +42,7 @@ AMyCharacter::AMyCharacter()
 
 	HealthComponent = CreateDefaultSubobject<UMyHealthComponent>
 		("Health Component");
+	HealthComponent->OnHealthChangedEvent.AddDynamic(this, &AMyCharacter::OnHealthChanged);
 
 	SetReplicates(true);
 }
@@ -47,6 +51,8 @@ AMyCharacter::AMyCharacter()
 void AMyCharacter::BeginPlay()
 {
 	Super::BeginPlay();
+
+	bIsDead = false;
 	
 	if (Role == ROLE_Authority && WeaponClass) {
 		FActorSpawnParameters parameters;
@@ -216,7 +222,6 @@ void AMyCharacter::Fire()
 	}
 	else {
 		UE_LOG(MyLogCategory, Error, TEXT("CurentWeapon is nullptr!"));
-
 	}
 }
 
@@ -255,4 +260,16 @@ void AMyCharacter::SpawnSimpleStuff(FVector loc)
 	parameters.Instigator = Instigator;
 	parameters.SpawnCollisionHandlingOverride = ESpawnActorCollisionHandlingMethod::AlwaysSpawn;
 	GetWorld()->SpawnActor<AActor>(MyItemBlueprintClass, loc, FRotator::ZeroRotator, parameters);
+}
+
+void AMyCharacter::OnHealthChanged(UMyHealthComponent* healthComp,
+	float health, float damage,
+	const class UDamageType* damageType,
+	class AController* instigatedBy, AActor* damageCauser)
+{
+	if (health <= 0 && !bIsDead) {
+		bIsDead = true;
+		GetMovementComponent()->StopMovementImmediately();
+		GetCapsuleComponent()->SetCollisionEnabled(ECollisionEnabled::NoCollision);
+	}
 }

@@ -94,10 +94,10 @@ void AMyWeapon::Fire()
 				this, DamageType);
 			PlayImpactEffects(hit.ImpactPoint);
 			endPoint = hit.ImpactPoint;
-
+			/*
 			AMyCharacter* ownerChar = Cast<AMyCharacter>(owner);
 			ownerChar->SpawnSimpleStuff(endPoint);
-			
+			*/
 			UE_LOG(MyLogCategory, Log, TEXT("-%s-: endpoint : %s"),
 				*GetNameSafe(hitActor), *endPoint.ToString());
 		}

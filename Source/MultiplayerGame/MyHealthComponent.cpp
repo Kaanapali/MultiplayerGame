@@ -2,6 +2,14 @@
 
 
 #include "MyHealthComponent.h"
+#include "MultiplayerGame.h"
+
+void UMyHealthComponent::GetLifetimeReplicatedProps(
+	TArray<FLifetimeProperty>& OutLifetimeProps) const
+{
+	Super::GetLifetimeReplicatedProps(OutLifetimeProps);
+	DOREPLIFETIME(UMyHealthComponent, Health);
+}
 
 // Sets default values for this component's properties
 UMyHealthComponent::UMyHealthComponent()
@@ -19,9 +27,11 @@ void UMyHealthComponent::BeginPlay()
 {
 	Super::BeginPlay();
 
-	AActor * myOwner = GetOwner();
-	if (myOwner) {
-		myOwner->OnTakeAnyDamage.AddDynamic(this, &UMyHealthComponent::OnTakeDamage);
+	if (GetOwnerRole() == ROLE_Authority) {
+		AActor * myOwner = GetOwner();
+		if (myOwner) {
+			myOwner->OnTakeAnyDamage.AddDynamic(this, &UMyHealthComponent::OnTakeDamage);
+		}
 	}
 }
 
