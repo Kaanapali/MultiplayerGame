@@ -73,16 +73,16 @@ protected:
 	TSubclassOf<AMyWeapon> WeaponClass;
 
 	UPROPERTY(Replicated, BlueprintReadOnly, Category = "Player")
-	uint8 bIsDead : 1;
+	bool bIsDead;
 
 	UPROPERTY(VisibleAnywhere, BlueprintReadWrite, Category = "Movement")
-	uint8 bDisableMovement : 1;
-	UPROPERTY(VisibleAnywhere, BlueprintReadWrite, Category = "Movement")
-	uint8 bJogPressed : 1;
-	UPROPERTY(VisibleAnywhere, BlueprintReadWrite, Category = "Movement")
-	uint8 bCrouchPressed : 1;
-	UPROPERTY(VisibleAnywhere, BlueprintReadWrite, Category = "Movement")
-	uint8 bJumpPressed : 1;
-	UPROPERTY(VisibleAnywhere, BlueprintReadWrite, Category = "Movement")
-	uint8 bPronePressed : 1;
+	bool bDisableMovement;
+	UPROPERTY(Replicated, BlueprintReadWrite, Category = "Movement")
+	bool bJogPressed;
+	UPROPERTY(Replicated, BlueprintReadWrite, Category = "Movement")
+	bool bCrouchPressed;
+	UPROPERTY(Replicated, BlueprintReadWrite, Category = "Movement")
+	bool bJumpPressed;
+	UPROPERTY(Replicated, BlueprintReadWrite, Category = "Movement")
+	bool bPronePressed;
 };

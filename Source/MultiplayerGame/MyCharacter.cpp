@@ -18,6 +18,7 @@ void AMyCharacter::GetLifetimeReplicatedProps(
 	Super::GetLifetimeReplicatedProps(OutLifetimeProps);
 	DOREPLIFETIME(AMyCharacter, CurrentWeapon);
 	DOREPLIFETIME(AMyCharacter, bIsDead);
+	DOREPLIFETIME(AMyCharacter, bJogPressed);
 }
 
 // Sets default values
@@ -45,6 +46,7 @@ AMyCharacter::AMyCharacter()
 	HealthComponent->OnHealthChangedEvent.AddDynamic(this, &AMyCharacter::OnHealthChanged);
 
 	SetReplicates(true);
+	//SetReplicateMovement(true);
 }
 
 // Called when the game starts or when spawned
@@ -129,7 +131,6 @@ void AMyCharacter::MoveRight(float value)
 
 void AMyCharacter::DoCrouch()
 {
-	// Crouch();
 	/**
 	 * because we don't have an animation to go from Prone to Crouch and vice-versa. 
 	 * If you had the animations, you would probably want to allow the player to enter a Prone state from Crouch
@@ -140,6 +141,7 @@ void AMyCharacter::DoCrouch()
 	if (!bCrouchPressed) {
 		bCrouchPressed = true;
 		GetCharacterMovement()->MaxWalkSpeed = 160.0f;
+		//Crouch();
 	}
 	else {
 		bCrouchPressed = false;
@@ -147,6 +149,7 @@ void AMyCharacter::DoCrouch()
 			GetCharacterMovement()->MaxWalkSpeed = 375.0f;
 		else
 			GetCharacterMovement()->MaxWalkSpeed = 200.0f;
+		//UnCrouch();
 	}	
 }
 
