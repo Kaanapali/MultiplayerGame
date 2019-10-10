@@ -21,6 +21,12 @@ public:
 	// for testing purpose: spawn a stuff right away.
 	void SpawnSimpleStuff(FVector loc);
 
+	//////////////////////////////////////////////////////////////////////////
+	// Movement
+
+	/** [server + local] change running state */
+	void SetRunning(bool bNewRunning, bool bToggle);
+
 protected:
 	void GetLifetimeReplicatedProps(TArray<FLifetimeProperty>& OutLifetimeProps) const;
 	// Called when the game starts or when spawned
@@ -36,10 +42,10 @@ protected:
 
 	void DoCrouch();
 	void DoProne();
-	void BeginJog();
-	void EndJog();
-	void BeginJump();
-	void EndJump();
+	void OnStartRunning();
+	void OnStopRunning();
+	void OnStartJump();
+	void OnStopJump();
 	
 	void Fire();
 
@@ -48,6 +54,11 @@ protected:
 					float health, float damage, 
 					const class UDamageType* damageType, 
 					class AController* instigatedBy, AActor* damageCauser);
+	
+	/** update running state */
+	UFUNCTION(reliable, server, WithValidation)
+	void ServerSetRunning(bool bNewRunning, bool bToggle);
+
 public:	
 	// Called every frame
 	virtual void Tick(float DeltaTime) override;
@@ -77,12 +88,14 @@ protected:
 
 	UPROPERTY(VisibleAnywhere, BlueprintReadWrite, Category = "Movement")
 	bool bDisableMovement;
-	UPROPERTY(Replicated, BlueprintReadWrite, Category = "Movement")
-	bool bJogPressed;
+
 	UPROPERTY(Replicated, BlueprintReadWrite, Category = "Movement")
 	bool bCrouchPressed;
-	UPROPERTY(Replicated, BlueprintReadWrite, Category = "Movement")
-	bool bJumpPressed;
+
 	UPROPERTY(Replicated, BlueprintReadWrite, Category = "Movement")
 	bool bPronePressed;
+
+	/** current running state */
+	UPROPERTY(Transient, Replicated, BlueprintReadOnly)
+	bool bJogPressed;
 };

@@ -18,7 +18,8 @@ void AMyCharacter::GetLifetimeReplicatedProps(
 	Super::GetLifetimeReplicatedProps(OutLifetimeProps);
 	DOREPLIFETIME(AMyCharacter, CurrentWeapon);
 	DOREPLIFETIME(AMyCharacter, bIsDead);
-	DOREPLIFETIME(AMyCharacter, bJogPressed);
+	DOREPLIFETIME_CONDITION(AMyCharacter, bJogPressed, COND_SkipOwner);
+	// DOREPLIFETIME_CONDITION(AMyCharacter, bPressedJump, COND_SkipOwner);
 }
 
 // Sets default values
@@ -40,6 +41,7 @@ AMyCharacter::AMyCharacter()
 
 	bDisableMovement = false;
 	bCrouchPressed = false;
+	bJogPressed = false;
 
 	HealthComponent = CreateDefaultSubobject<UMyHealthComponent>
 		("Health Component");
@@ -101,17 +103,17 @@ void AMyCharacter::SetupPlayerInputComponent(UInputComponent* PlayerInputCompone
 								&AMyCharacter::DoProne);
 
 	PlayerInputComponent->BindAction("Jump", IE_Pressed, this,
-								&AMyCharacter::BeginJump);
+								&AMyCharacter::OnStartJump);
 	PlayerInputComponent->BindAction("Jump", IE_Released, this,
-								&AMyCharacter::EndJump);
+								&AMyCharacter::OnStopJump);
 
 	PlayerInputComponent->BindAction("Fire", IE_Pressed, this,
 								&AMyCharacter::Fire);
 
 	PlayerInputComponent->BindAction("Jog", IE_Pressed, this,
-		&AMyCharacter::BeginJog);
+		&AMyCharacter::OnStartRunning);
 	PlayerInputComponent->BindAction("Jog", IE_Released, this,
-		&AMyCharacter::EndJog);
+		&AMyCharacter::OnStopRunning);
 }
 
 void AMyCharacter::MoveForward(float value)
@@ -174,48 +176,53 @@ void AMyCharacter::DoProne()
 	}	
 }
 
-void AMyCharacter::BeginJog()
+void AMyCharacter::OnStartRunning()
 {
+	if (!Controller)
+		return;
+
 	if (bDisableMovement)
 		return;
 
-	bJogPressed = true;
+	SetRunning(true, false);
 
-	GetCharacterMovement()->MaxWalkSpeed = 375.0f;
+	// bJogPressed = true;
+
+	// GetCharacterMovement()->MaxWalkSpeed = 375.0f;
 }
 
-void AMyCharacter::EndJog()
+void AMyCharacter::OnStopRunning()
 {
-	bJogPressed = false;
+	SetRunning(false, false);
 
+	bJogPressed = false;
+	/*
 	if (bCrouchPressed)
 		GetCharacterMovement()->MaxWalkSpeed = 160.0f;
 	else
 		GetCharacterMovement()->MaxWalkSpeed = 200.0f;
+	*/
 }
 
-void AMyCharacter::BeginJump()
+void AMyCharacter::OnStartJump()
 {
 	if (bDisableMovement)
 		return;
 
 	if (!bCrouchPressed || (bCrouchPressed && GetCharacterMovement()->MaxWalkSpeed > 160.0f)) {
 		if (GetCharacterMovement()->Velocity.Size() > 0) {
-			Jump();
 			GetCharacterMovement()->JumpZVelocity = 365;
 		}
 		else {
-			Jump();
 			GetCharacterMovement()->JumpZVelocity = 340;
 		}
+		Jump();
 	}
-
-	bJumpPressed = true;
 }
 
-void AMyCharacter::EndJump()
+void AMyCharacter::OnStopJump()
 {
-	bJumpPressed = false;
+	StopJumping();
 }
 
 void AMyCharacter::Fire()
@@ -275,4 +282,34 @@ void AMyCharacter::OnHealthChanged(UMyHealthComponent* healthComp,
 		GetMovementComponent()->StopMovementImmediately();
 		GetCapsuleComponent()->SetCollisionEnabled(ECollisionEnabled::NoCollision);
 	}
+}
+
+void AMyCharacter::SetRunning(bool bNewRunning, bool bToggle)
+{
+	bJogPressed = bNewRunning;
+	// bWantsToRunToggled = bNewRunning && bToggle;
+	if (bJogPressed) {
+		GetCharacterMovement()->MaxWalkSpeed = 375.0f;
+	}
+	else {
+		if (bCrouchPressed)
+			GetCharacterMovement()->MaxWalkSpeed = 160.0f;
+		else
+			GetCharacterMovement()->MaxWalkSpeed = 200.0f;
+	}
+
+	if (Role < ROLE_Authority)
+	{
+		ServerSetRunning(bNewRunning, bToggle);
+	}
+}
+
+bool AMyCharacter::ServerSetRunning_Validate(bool bNewRunning, bool bToggle)
+{
+	return true;
+}
+
+void AMyCharacter::ServerSetRunning_Implementation(bool bNewRunning, bool bToggle)
+{
+	SetRunning(bNewRunning, bToggle);
 }
