@@ -120,7 +120,7 @@ void AMyCharacter::MoveForward(float value)
 {
 	if (!bDisableMovement) {
 		//FVector Direction = FRotationMatrix(Controller->GetControlRotation()).GetScaledAxis(EAxis::X);
-		FVector Direction = GetActorForwardVector();
+		//FVector Direction = GetActorForwardVector();
 		AddMovementInput(GetActorForwardVector(), value);
 	}
 }
