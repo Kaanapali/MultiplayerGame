@@ -19,7 +19,8 @@ void AMyCharacter::GetLifetimeReplicatedProps(
 	DOREPLIFETIME(AMyCharacter, CurrentWeapon);
 	DOREPLIFETIME(AMyCharacter, bIsDead);
 	DOREPLIFETIME_CONDITION(AMyCharacter, bJogPressed, COND_SkipOwner);
-	// DOREPLIFETIME_CONDITION(AMyCharacter, bPressedJump, COND_SkipOwner);
+	DOREPLIFETIME_CONDITION(AMyCharacter, bCrouchPressed, COND_SkipOwner);
+	DOREPLIFETIME_CONDITION(AMyCharacter, bPronePressed, COND_SkipOwner);
 }
 
 // Sets default values
